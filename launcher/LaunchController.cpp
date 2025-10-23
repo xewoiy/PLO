@@ -133,7 +133,7 @@ void LaunchController::decideAccount()
 
 bool LaunchController::askPlayDemo()
 {
-    QMessageBox box(m_parentWidget);
+    /* QMessageBox box(m_parentWidget);
     box.setWindowTitle(tr("Play demo?"));
     box.setText(
         tr("This account does not own Minecraft.\nYou need to purchase the game first to play it.\n\nDo you want to play "
@@ -144,7 +144,8 @@ bool LaunchController::askPlayDemo()
     box.setDefaultButton(cancelButton);
 
     box.exec();
-    return box.clickedButton() == demoButton;
+    return box.clickedButton() == demoButton; */
+    return false;
 }
 
 QString LaunchController::askOfflineName(QString playerName, bool demo, bool& ok)
