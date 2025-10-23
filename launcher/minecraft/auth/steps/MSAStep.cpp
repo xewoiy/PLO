@@ -120,12 +120,12 @@ MSAStep::MSAStep(AccountData* data, bool silent) : AuthStep(data), m_silent(sile
     });
     connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::authorizeWithBrowser, this, &MSAStep::authorizeWithBrowser);
     connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::requestFailed, this, [this, silent](const QAbstractOAuth2::Error err) {
-        auto state = AccountTaskState::STATE_FAILED_HARD;
+        auto state = AccountTaskState::STATE_OFFLINE;
         if (m_oauth2.status() == QAbstractOAuth::Status::Granted || silent) {
             if (err == QAbstractOAuth2::Error::NetworkError) {
                 state = AccountTaskState::STATE_OFFLINE;
             } else {
-                state = AccountTaskState::STATE_FAILED_SOFT;
+                state = AccountTaskState::STATE_OFFLINE;
             }
         }
         auto message = tr("Microsoft user authentication failed.");
